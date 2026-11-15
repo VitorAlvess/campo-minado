@@ -1,12 +1,13 @@
 import React from 'react';
 import { Difficulty, DIFFICULTIES, InteractionMode } from '../types';
-import { Pickaxe, Flag, Sparkles } from 'lucide-react';
+import { Pickaxe, Flag, Sparkles, Dices } from 'lucide-react';
 
 interface ControlsProps {
   difficulty: Difficulty;
   onSelectDifficulty: (d: Difficulty) => void;
   mode: InteractionMode;
   onToggleMode: (m: InteractionMode) => void;
+  onOpenSeedModal?: () => void;
 }
 
 export const Controls: React.FC<ControlsProps> = ({
@@ -14,6 +15,7 @@ export const Controls: React.FC<ControlsProps> = ({
   onSelectDifficulty,
   mode,
   onToggleMode,
+  onOpenSeedModal,
 }) => {
   return (
     <div className="w-full flex flex-col gap-2.5 mt-3 select-none">
@@ -83,6 +85,18 @@ export const Controls: React.FC<ControlsProps> = ({
           );
         })}
       </div>
+
+      {/* Botão de Jogar com Seed / Desafio */}
+      {onOpenSeedModal && (
+        <button
+          type="button"
+          onClick={onOpenSeedModal}
+          className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-[#4a752c] hover:bg-[#578a34] active:scale-98 rounded-2xl shadow-md border border-[#3e6824] text-xs font-bold text-white transition-all cursor-pointer"
+        >
+          <Dices className="w-4 h-4 text-amber-300" />
+          <span>Desafio por Seed / Jogar com Amigo</span>
+        </button>
+      )}
 
       {/* Dica de Toque Longo */}
       <div className="flex items-center justify-center gap-1.5 text-center text-xs text-white/90 bg-[#4a752c]/90 py-2 px-3 rounded-xl shadow-sm border border-[#3e6824]">

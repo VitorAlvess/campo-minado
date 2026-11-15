@@ -44,3 +44,14 @@ export type GameStatus = 'idle' | 'playing' | 'won' | 'lost';
 
 export type InteractionMode = 'reveal' | 'flag';
 
+export interface SeedMatchInfo {
+  code: string;
+  seed: string;
+  rows: number;
+  cols: number;
+  mines: number;
+  threeBV: number;
+  startCell: { row: number; col: number };
+}
+
+
