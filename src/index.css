@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #4a752c; /* Verde Google Lush */
+}
+
+/* Otimizações Nativas para iOS (Safari & PWA Standalone) */
+html {
+  /* Desativa pull-to-refresh e efeito de elástico do Safari */
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+
+  /* Desativa o zoom de duplo toque */
+  touch-action: manipulation;
+
+  /* Desativa seleção de texto */
+  -webkit-user-select: none;
+  user-select: none;
+
+  /* Desativa preview de toque longo nativo do iOS */
+  -webkit-touch-callout: none;
+
+  /* Remove highlight padrão ao tocar */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  /* Suporte à área segura do iPhone (Notch, Dynamic Island e Home Indicator) */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Animação suave para novos banners */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
