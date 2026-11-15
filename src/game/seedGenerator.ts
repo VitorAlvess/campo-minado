@@ -57,7 +57,7 @@ export function encodeSeedCode(
   mines: number,
   seed: string,
 ): string {
-  const cleanSeed = seed.toUpperCase().trim().replace(/[^2-9A-HJ-NP-Z]/g, '');
+  const cleanSeed = seed.toUpperCase().trim().replace(/[^2-9A-HJKMNP-TV-Z]/g, '');
   return `${cols}x${rows}-${mines}-${cleanSeed}`;
 }
 
@@ -77,7 +77,7 @@ export function decodeSeedCode(code: string): ParsedSeedCode | null {
   const trimmed = code.trim().toUpperCase();
 
   // Regex para formato: {cols}x{rows}-{mines}-{seed}
-  const match = /^(\d{1,2})X(\d{1,2})-(\d{1,3})-([2-9A-HJ-NP-Z]{3,16})$/i.exec(
+  const match = /^(\d{1,2})X(\d{1,2})-(\d{1,3})-([2-9A-HJKMNP-TV-Z]{3,16})$/i.exec(
     trimmed,
   );
   if (!match) return null;
@@ -164,7 +164,7 @@ export function generateBoardFromSeed(
   seed: string,
 ): GeneratedSeedBoard {
   const prng = createPRNG(seed);
-  const cleanSeed = seed.toUpperCase().trim().replace(/[^2-9A-HJ-NP-Z]/g, '');
+  const cleanSeed = seed.toUpperCase().trim().replace(/[^2-9A-HJKMNP-TV-Z]/g, '');
   const seedCode = encodeSeedCode(rows, cols, minesCount, cleanSeed);
 
   // Cria tabuleiro vazio

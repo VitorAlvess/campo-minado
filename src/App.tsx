@@ -240,7 +240,14 @@ export function App() {
 
   // Abertura rápida de vizinhos (Chording)
   const handleChord = (row: number, col: number) => {
-    if (gameStatus !== 'playing') return;
+    if (gameStatus !== 'playing') {
+      // Em partidas de seed, se a primeira ação for um chording em célula já aberta
+      if (gameStatus === 'idle' && seedMatch) {
+        setGameStatus('playing');
+      } else {
+        return;
+      }
+    }
     setMovesCount((m) => m + 1);
     const { newBoard, hitMine } = chordCell(board, row, col);
 

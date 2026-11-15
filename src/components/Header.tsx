@@ -41,6 +41,8 @@ export const Header: React.FC<HeaderProps> = ({
   const handleCopyOrShare = () => {
     if (onShareSeed) {
       onShareSeed();
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } else if (seedCode && typeof navigator !== 'undefined') {
       navigator.clipboard?.writeText(seedCode);
       setCopied(true);

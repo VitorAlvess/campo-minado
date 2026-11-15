@@ -171,3 +171,4 @@ export const SeedModal: React.FC<SeedModalProps> = ({
     </div>
   );
 };
+
