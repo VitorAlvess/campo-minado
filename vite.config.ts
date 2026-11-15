@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'icon.svg'],
+      includeAssets: ['apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'favicon.png'],
       manifest: {
         name: 'Campo Minado Google',
         short_name: 'Campo Minado',
@@ -17,13 +17,23 @@ export default defineConfig({
         background_color: '#4a752c',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: './',
         icons: [
           {
-            src: '/icon.svg',
-            sizes: '192x192 512x512',
-            type: 'image/svg+xml',
+            src: 'icon-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
             purpose: 'any maskable',
+          },
+          {
+            src: 'apple-touch-icon.png',
+            sizes: '180x180',
+            type: 'image/png',
           },
         ],
       },
